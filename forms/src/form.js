@@ -38,14 +38,16 @@ const Form = () => {
         <div>
             <h1>Build a Team!</h1>
             {error && <h2>{error}</h2>}
-            {team.map((team, index) => (
-                <div key={index} >
-                    {console.log(team)}
-                    <h2>{team.role}</h2>
-                    <h3>{team['name']}</h3>
-                    <h3>Email: {team.email}</h3>
-                </div>
-            ))}
+            <div className="teamCont">
+                {team.map((team, index) => (
+                    <div className="member" key={index} >
+                        {console.log(team)}
+                        <h2>{team.role}</h2>
+                        <h3>{team['name']}</h3>
+                        <h4>{team.email}</h4>
+                    </div>
+                ))}
+            </div>
             <form onSubmit={submit} >
                 <label>
                     Name
@@ -60,7 +62,7 @@ const Form = () => {
                 <label>
                     Email
                     <input
-                        type='text'
+                        type='email'
                         name='email'
                         value={formValues.email}
                         onChange={changeHandler}
