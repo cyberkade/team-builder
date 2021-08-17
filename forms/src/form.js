@@ -1,7 +1,8 @@
-import React, {useState} from 'react';
-// import {render} from 'react-dom';
+import React, {useState, useEffect} from 'react';
 
-const Form = () => {
+const Form = (props) => {
+    const {memberToEdit, editMember} = props;
+
     const [formValues, setFormValues] = useState({
         name: '',
         email: '',
@@ -32,6 +33,10 @@ const Form = () => {
         setError(null);  
     }
 
+    useEffect( () => {
+        console.log(memberToEdit);
+    }, [memberToEdit])
+
     return (
         <div>
             <h1>Build a Team!</h1>
@@ -42,6 +47,7 @@ const Form = () => {
                         <h2>{team.role}</h2>
                         <h3>{team['name']}</h3>
                         <h4>{team.email}</h4>
+                        <button onClick={ () => editMember(team) }>Edit</button>
                     </div>
                 ))}
             </div>

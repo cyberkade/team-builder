@@ -1,10 +1,18 @@
+import React, {useState} from 'react';
 import './App.css';
 import Form from './form';
 
 function App() {
+  const [memberToEdit, setMemberToEdit] = useState("");
+
+  const editMember = (member) => {
+    console.log(member);
+    setMemberToEdit(member);
+  }
+
   return (
     <div className="App">
-      <Form />
+      <Form editMember={editMember} memberToEdit={memberToEdit} />
     </div>
   );
 }
