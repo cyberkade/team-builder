@@ -7,8 +7,8 @@ const Form = () => {
         email: '',
         role: '',
     });
-    
     const [team, setTeam] = useState([]);
+    const [error, setError]= useState(null);
 
     const changeHandler = (e) => {
         setFormValues({  ...formValues, [e.target.name]: e.target.value})
@@ -21,20 +21,29 @@ const Form = () => {
             email: formValues.email.trim(),
             role: formValues.role
         }]
-        console.log(newMember);
+        console.log('here');
+
+        if (!formValues.name || !formValues.email || !formValues.role){
+            setError("Fill Out Every Field Please!");
+            return;
+        }
+        console.log('here after conditional');
+
         setTeam(newMember)
-        setFormValues({name: '',email: '', role: ''})   
+        setFormValues({name: '',email: '', role: ''}) 
+        setError(null);  
     }
 
     return (
         <div>
             <h1>Build a Team!</h1>
+            {error && <h2>{error}</h2>}
             {team.map((team, index) => (
                 <div key={index} >
                     {console.log(team)}
-                    Name: {team['name']}
-                    Email: {team.email}
-                    Role: {team.role}
+                    <h2>{team.role}</h2>
+                    <h3>{team['name']}</h3>
+                    <h3>Email: {team.email}</h3>
                 </div>
             ))}
             <form onSubmit={submit} >
@@ -45,6 +54,7 @@ const Form = () => {
                         name='name'
                         value={formValues.name}
                         onChange={changeHandler}
+                        placeholder="Enter Your Name"
                     />
                 </label>
                 <label>
@@ -54,6 +64,7 @@ const Form = () => {
                         name='email'
                         value={formValues.email}
                         onChange={changeHandler}
+                        placeholder="Enter Your Email"
                     />
                 </label>
                 <label>
