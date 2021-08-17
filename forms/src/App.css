@@ -1,0 +1,43 @@
+.App {
+  text-align: center;
+}
+
+.teamCont {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.member {
+  display: flex;
+  flex-flow: column;
+  background-color: honeydew;
+  margin: 0px 0px 25px 0px;
+  padding: 10px;
+  border-radius: 25px;
+  align-items: center;
+}
+
+button {
+  width:100px;
+  background-color: rgb(167, 164, 164);
+  border-radius: 25px;
+  border: 3px solid rgb(167, 164, 164);
+} 
+
+h2, h4 {
+  color: rgb(167, 164, 164);
+}
+
+h3 {
+  color: rgb(161, 161, 253);
+}
+
+label {
+  margin: 0px 10px;
+}
+
+input, select {
+  margin: 0px 5px;
+}
