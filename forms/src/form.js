@@ -16,20 +16,18 @@ const Form = () => {
 
     const submit = (e) => {
         e.preventDefault();
-        let newMember =[...team, {
+        let newMembers =[...team, {
             name: formValues.name.trim(),
             email: formValues.email.trim(),
             role: formValues.role
         }]
-        console.log('here');
-
+ 
         if (!formValues.name || !formValues.email || !formValues.role){
             setError("Fill Out Every Field Please!");
             return;
         }
-        console.log('here after conditional');
-
-        setTeam(newMember)
+        console.log(team);
+        setTeam(newMembers)
         setFormValues({name: '',email: '', role: ''}) 
         setError(null);  
     }
@@ -41,7 +39,6 @@ const Form = () => {
             <div className="teamCont">
                 {team.map((team, index) => (
                     <div className="member" key={index} >
-                        {console.log(team)}
                         <h2>{team.role}</h2>
                         <h3>{team['name']}</h3>
                         <h4>{team.email}</h4>
